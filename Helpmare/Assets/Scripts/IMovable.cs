@@ -1,4 +1,0 @@
-﻿interface IMovable
-{
-    void Move();
-}
