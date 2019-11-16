@@ -26,12 +26,12 @@ public class PlayerMovement : MonoBehaviour, IMovable
 
     private void FixedUpdate()
     {
-        Move(rb, moveSpeed, movement);
+        Move();
     }
 
-    public void Move(Rigidbody2D rb, float speed, Vector2 movement)
+    public void Move()
     {
-        rb.MovePosition(rb.position + movement * speed * Time.deltaTime);
+        rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
     }
 
     private void SetMovementAnimation()

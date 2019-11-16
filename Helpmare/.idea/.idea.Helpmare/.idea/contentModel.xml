@@ -7,10 +7,9 @@
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="Scripts" t="Include">
-          <e p="Dreamer" t="Include">
-            <e p="DreamerMovement.cs" t="Include" />
-          </e>
+          <e p="DreamerMovement.cs" t="Include" />
           <e p="IMovable.cs" t="Include" />
+          <e p="PlayerMovement.cs" t="Include" />
           <e p="Stress.cs" t="Include" />
         </e>
       </e>
