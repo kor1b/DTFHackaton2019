@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Barricade
   layers:
   - Default
   - TransparentFX
@@ -13,10 +14,20 @@ TagManager:
   - UI
   - 
   - 
+<<<<<<< HEAD
+  - Obstacle
+<<<<<<< HEAD
+=======
   - IgnoreDreamer
+>>>>>>> GeneralTimer
   - 
   - 
   - 
+=======
+  - NPC
+  - Player
+  - MovableObstacle
+>>>>>>> DreaerAI_Obstacles
   - 
   - 
   - 
@@ -38,6 +49,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 672293481
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 321069391
     locked: 0
