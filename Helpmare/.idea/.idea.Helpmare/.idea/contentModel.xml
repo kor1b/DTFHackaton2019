@@ -219,8 +219,12 @@
           <e p="ObstacleMovement.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
           <e p="Portal.cs" t="Include" />
+          <e p="ScaryMonster.cs" t="Include" />
+          <e p="ScaryNoise.cs" t="Include" />
+          <e p="ScaryThings.cs" t="Include" />
           <e p="Stress.cs" t="Include" />
         </e>
+        <e p="temp.cs" t="Include" />
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
             <e p="LiberationSans - OFL.txt" t="Include" />

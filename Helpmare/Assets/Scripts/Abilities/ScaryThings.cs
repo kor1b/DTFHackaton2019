@@ -4,25 +4,23 @@ using UnityEngine;
 
 public abstract class ScaryThings : MonoBehaviour
 {
-    [SerializeField]
-    private Transform dreamer;
-    [SerializeField]
-    private AudioSource _audio;
-    private float rangeRadius;
+    [SerializeField] private Transform dreamer = null; 
+    [SerializeField] private AudioSource _audio;
+    private float _rangeRadius;
 
-    [SerializeField]
-    private AudioClip[] noises;
-    [SerializeField]
-    private float maxDamage = 40f;
-    [SerializeField]
-    private AnimationCurve powerOfDamage;
-    [SerializeField]
-    private float displayTime = 5f;
+    [SerializeField] private AudioClip[] noises;
+    [SerializeField] private float maxDamage = 40f;
+    [SerializeField] private AnimationCurve powerOfDamage = null;
+    [SerializeField] private float displayTime = 5f;
 
+    private Stress _stressInstance;
+    
     private void Awake()
     {
+        _stressInstance = Stress.Instance;
+        
         _audio = GetComponent<AudioSource>();
-        rangeRadius = GetComponent<BoxCollider2D>().size.x / 2;
+        _rangeRadius = GetComponent<BoxCollider2D>().size.x / 2;
         noises = new AudioClip[1];
     }
 
@@ -32,8 +30,7 @@ public abstract class ScaryThings : MonoBehaviour
         if (!CanScare(distanceToDreamer))
             return;
 
-        //Debug.Log("StressUp by " + maxDamage * powerOfDamage.Evaluate(1 - (distanceToDreamer / rangeRadius)) + "Evaluated: " + powerOfDamage.Evaluate(1 - (distanceToDreamer / rangeRadius)));
-        Stress.Instance.StressUp(maxDamage * powerOfDamage.Evaluate(1 - (distanceToDreamer / rangeRadius)));
+        _stressInstance.StressUp(maxDamage * powerOfDamage.Evaluate(1 - (distanceToDreamer / _rangeRadius)));
 
         SelectAndPlayAudio();
         DisplayGraphycs();
@@ -43,7 +40,7 @@ public abstract class ScaryThings : MonoBehaviour
 
     private bool CanScare(float distance)
     {
-        return distance <= rangeRadius;
+        return distance <= _rangeRadius;
     }
 
     private void SelectAndPlayAudio()
@@ -57,7 +54,6 @@ public abstract class ScaryThings : MonoBehaviour
     {
         //TO DO
     }
-
 
     public IEnumerator Hide()
     {
