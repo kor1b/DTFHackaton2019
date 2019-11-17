@@ -5,9 +5,6 @@ using UnityEngine;
 public class ObstacleMovement : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private BoxCollider2D boxCollider;
-    private Vector2 prevPosition;
-    [SerializeField]
     private Vector2 movement;
 
     private float distanceToVerticalSide;
@@ -16,8 +13,7 @@ public class ObstacleMovement : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        boxCollider = GetComponent<BoxCollider2D>();
-        prevPosition = transform.position;
+        BoxCollider2D boxCollider = GetComponent<BoxCollider2D>();
         distanceToVerticalSide = boxCollider.size.x / 2;
         distanceToHorizontalSide = boxCollider.size.y / 2;
     }
@@ -36,7 +32,6 @@ public class ObstacleMovement : MonoBehaviour
     */
     private void OnCollisionExit2D(Collision2D collision)
     {
-        prevPosition = transform.position;
         movement = Vector2.zero;
         FreezeAxis();
     }
