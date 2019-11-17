@@ -17,12 +17,16 @@ public class ObstacleMovement : MonoBehaviour
         distanceToVerticalSide = boxCollider.size.x / 2;
         distanceToHorizontalSide = boxCollider.size.y / 2;
     }
-    
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    private void OnCollisionEnter2D (Collision2D collision)
     {
-        UpdateMovement(collision.rigidbody.velocity);
-        FreezeAxis();
+        if (collision.gameObject.CompareTag ("Player"))
+        {
+            UpdateMovement (collision.rigidbody.velocity);
+            FreezeAxis();
+        }
     }
+
     /*
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -30,22 +34,26 @@ public class ObstacleMovement : MonoBehaviour
         FreezeAxis();
     }
     */
-    private void OnCollisionExit2D(Collision2D collision)
+    private void OnCollisionExit2D (Collision2D collision)
     {
-        movement = Vector2.zero;
-        FreezeAxis();
+        if (collision.gameObject.CompareTag ("Player"))
+        {
+            movement = Vector2.zero;
+            FreezeAxis();
+        }
     }
 
-    private void UpdateMovement(Vector2 velocity)
+    private void UpdateMovement (Vector2 velocity)
     {
-        if (Mathf.Abs(rb.velocity.x - rb.velocity.y) <= 0.2)
+        if (Mathf.Abs (rb.velocity.x - rb.velocity.y) <= 0.2)
         {
             movement.x = 0;
             movement.y = 1;
+
             return;
         }
 
-        if (Mathf.Abs(rb.velocity.x) - Mathf.Abs(rb.velocity.y) > 0.2) 
+        if (Mathf.Abs (rb.velocity.x) - Mathf.Abs (rb.velocity.y) > 0.2)
         {
             movement.x = 1;
         }
@@ -54,7 +62,7 @@ public class ObstacleMovement : MonoBehaviour
             movement.x = 0;
         }
 
-        if (Mathf.Abs(rb.velocity.y) - Mathf.Abs(rb.velocity.x) > 0.2) 
+        if (Mathf.Abs (rb.velocity.y) - Mathf.Abs (rb.velocity.x) > 0.2)
         {
             movement.y = 1;
         }
@@ -68,11 +76,13 @@ public class ObstacleMovement : MonoBehaviour
     {
         rb.constraints = RigidbodyConstraints2D.None;
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+
         if (movement.x == 0 && movement.y == 0) //если не двигаемся
             return;
+
         if (movement.y == 0)
             rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionY;
-        else if(movement.x == 0)
+        else if (movement.x == 0)
             rb.constraints = RigidbodyConstraints2D.FreezeRotation | RigidbodyConstraints2D.FreezePositionX;
     }
 }

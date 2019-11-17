@@ -210,9 +210,6 @@
         </e>
         <e p="Scripts" t="Include">
           <e p="AIMapRescanner.cs" t="Include" />
-          <e p="Controllers" t="Include">
-            <e p="GameController.cs" t="Include" />
-          </e>
           <e p="Intefaces" t="Include">
             <e p="IMovable.cs" t="Include" />
           </e>
@@ -220,6 +217,11 @@
           <e p="PlayerMovement.cs" t="Include" />
           <e p="Portal.cs" t="Include" />
           <e p="Stress.cs" t="Include" />
+        </e>
+        <e p="Sprites" t="Include">
+          <e p="Controllers" t="Include">
+            <e p="GameController.cs" t="Include" />
+          </e>
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">
