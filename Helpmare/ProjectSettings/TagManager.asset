@@ -14,21 +14,11 @@ TagManager:
   - UI
   - 
   - 
-<<<<<<< HEAD
-  - Obstacle
-<<<<<<< HEAD
-=======
   - IgnoreDreamer
->>>>>>> GeneralTimer
-  - 
-  - 
-  - 
-=======
   - NPC
-  - Player
+  - Obstacle
   - MovableObstacle
->>>>>>> DreaerAI_Obstacles
-  - 
+  - Player
   - 
   - 
   - 
@@ -50,11 +40,11 @@ TagManager:
   - 
   m_SortingLayers:
   - name: Background
-    uniqueID: 672293481
+    uniqueID: 3949320717
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
   - name: Foreground
-    uniqueID: 321069391
+    uniqueID: 3650533931
     locked: 0
