@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class Stress : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Stress : MonoBehaviour
 
     private float _stressLevel;
 
+    [SerializeField] private Slider stressSlider;
+    
     //clamp stress level btw "minStressValue" and "maxStressValue"
     public float StressLevel
     {
@@ -42,6 +45,7 @@ public class Stress : MonoBehaviour
     public void StressUp (float amount)
     {
         StressLevel += amount;
+        stressSlider.value = StressLevel;
     }
 
     /// <summary>
@@ -51,5 +55,6 @@ public class Stress : MonoBehaviour
     public void StressDown (float amount)
     {
         StressLevel -= amount;
+        stressSlider.value = StressLevel;
     }
 }

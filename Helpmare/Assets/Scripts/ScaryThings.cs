@@ -32,7 +32,7 @@ public abstract class ScaryThings : MonoBehaviour
         if (!CanScare(distanceToDreamer))
             return;
 
-        //Debug.Log("StressUp by " + maxDamage * powerOfDamage.Evaluate(1 - (distanceToDreamer / rangeRadius)) + "Evaluated: " + powerOfDamage.Evaluate(1 - (distanceToDreamer / rangeRadius)));
+        Debug.Log("StressUp by " + maxDamage * powerOfDamage.Evaluate(1 - (distanceToDreamer / rangeRadius)) + "Evaluated: " + powerOfDamage.Evaluate(1 - (distanceToDreamer / rangeRadius)));
         Stress.Instance.StressUp(maxDamage * powerOfDamage.Evaluate(1 - (distanceToDreamer / rangeRadius)));
 
         SelectAndPlayAudio();
