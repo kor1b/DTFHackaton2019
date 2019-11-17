@@ -15,11 +15,13 @@ TagManager:
   - 
   - 
 <<<<<<< HEAD
+<<<<<<< HEAD
   - Obstacle
 <<<<<<< HEAD
 =======
+=======
+>>>>>>> PortalMechanics
   - IgnoreDreamer
->>>>>>> GeneralTimer
   - 
   - 
   - 
@@ -49,9 +51,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+<<<<<<< HEAD
   - name: Background
     uniqueID: 672293481
     locked: 0
+=======
+>>>>>>> PortalMechanics
   - name: Default
     uniqueID: 0
     locked: 0
