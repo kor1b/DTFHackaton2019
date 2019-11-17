@@ -119,8 +119,8 @@ namespace Pathfinding {
 		public OnPathDelegate postProcessPath;
 
 		/// <summary>Used for drawing gizmos</summary>
-		[System.NonSerialized]
-		List<Vector3> lastCompletedVectorPath;
+		//[System.NonSerialized]
+		public List<Vector3> lastCompletedVectorPath;
 
 		/// <summary>Used for drawing gizmos</summary>
 		[System.NonSerialized]

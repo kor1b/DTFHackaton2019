@@ -208,20 +208,24 @@
             <e p="UnityReferenceHelper.cs" t="Include" />
           </e>
         </e>
+        <e p="DreamerCharacter.cs" t="Include" />
         <e p="Scripts" t="Include">
-          <e p="AIMapRescanner.cs" t="Include" />
-          <e p="Controllers" t="Include">
-            <e p="GameController.cs" t="Include" />
+          <e p="Abilities" t="Include">
+            <e p="ScaryMonster.cs" t="Include" />
+            <e p="ScaryNoise.cs" t="Include" />
+            <e p="ScaryThings.cs" t="Include" />
           </e>
+          <e p="AIMapRescanner.cs" t="Include" />
+          <e p="EnemyLightSpawner.cs" t="Include" />
           <e p="Intefaces" t="Include">
             <e p="IMovable.cs" t="Include" />
+          </e>
+          <e p="Managers" t="Include">
+            <e p="GameController.cs" t="Include" />
           </e>
           <e p="ObstacleMovement.cs" t="Include" />
           <e p="PlayerMovement.cs" t="Include" />
           <e p="Portal.cs" t="Include" />
-          <e p="ScaryMonster.cs" t="Include" />
-          <e p="ScaryNoise.cs" t="Include" />
-          <e p="ScaryThings.cs" t="Include" />
           <e p="Stress.cs" t="Include" />
         </e>
         <e p="temp.cs" t="Include" />
