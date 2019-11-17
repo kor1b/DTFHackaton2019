@@ -16,7 +16,7 @@ public class Stress : MonoBehaviour
     private float stressTimer = 5f;
 
     [SerializeField] private float stressPassiveDecriase = 0.1f;
-    [SerializeField] private float lerpSpeed = 1.5f; 
+    [SerializeField] private float lerpSpeed = 3f; 
 
     public float stressLevel;
 
@@ -88,13 +88,14 @@ public class Stress : MonoBehaviour
 
     IEnumerator IncreaseSlider(float amount)
     {
-        while (stressBar.value <= amount - 0.5f)
+        float animationTime = 0f;
+        while (animationTime <= lerpSpeed)
         {
-            stressBar.value = Mathf.MoveTowards(stressBar.value, amount, lerpSpeed * Time.deltaTime);
-            yield return Time.deltaTime;
+            animationTime += Time.deltaTime;
+            float lerpValue = animationTime / lerpSpeed;
+            stressBar.value = Mathf.MoveTowards(stressBar.value, amount, lerpValue);
+            yield return null;
         }
-        stressBar.value = amount;
-        yield return null;
     }
 
     /// <summary>
@@ -103,6 +104,6 @@ public class Stress : MonoBehaviour
     /// <param name="amount"></param>
     private void ChangeStressBar(float amount)
     {
-            stressBar.value = amount;
+        StartCoroutine(IncreaseSlider(amount));
     }
 }
