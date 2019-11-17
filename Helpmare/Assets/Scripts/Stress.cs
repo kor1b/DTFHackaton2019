@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Stress : MonoBehaviour
 {
@@ -19,8 +20,12 @@ public class Stress : MonoBehaviour
     [SerializeField] private float minCriticalStressValue = 90;            //stress level when dreamer dies
     [SerializeField] private float maxCriticalStressValue = 100;
     [SerializeField] private float criticalStressSpeedDown = 5;
+    
+    [Space]
 
     [SerializeField] private DreamerCharacter _dreamerCharacter;
+
+    [SerializeField] private Slider stressSlider;
 
     private float _stressLevel;
 
@@ -53,6 +58,7 @@ public class Stress : MonoBehaviour
     private void Update()
     {
         StressDownByTime();
+        stressSlider.value = StressLevel;
     }
 
     /// <summary>
