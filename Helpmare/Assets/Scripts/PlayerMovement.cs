@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,6 +33,12 @@ public class PlayerMovement : MonoBehaviour, IMovable
     public void Move()
     {
         rb.MovePosition(rb.position + movement * moveSpeed * Time.deltaTime);
+    }
+
+    private void OnCollisionExit2D (Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Barricade"))
+            AIMapRescanner.Rescan();
     }
 
     private void SetMovementAnimation()
