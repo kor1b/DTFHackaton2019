@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class Stress : MonoBehaviour
 {
@@ -6,6 +9,14 @@ public class Stress : MonoBehaviour
 
     [SerializeField] private float minStressValue = 0;
     [SerializeField] private float maxStressValue = 100;
+
+    [SerializeField] private Slider stressBar;
+
+    [SerializeField]private float stressTime = 5f;
+    private float stressTimer = 5f;
+
+    [SerializeField] private float stressPassiveDecriase = 0.1f;
+    [SerializeField] private float lerpSpeed = 1.5f; 
 
     public float stressLevel;
 
@@ -21,6 +32,7 @@ public class Stress : MonoBehaviour
                 stressLevel = maxStressValue;
             else
                 stressLevel = value;
+
         }
     }
 
@@ -33,7 +45,24 @@ public class Stress : MonoBehaviour
         Instance = this;
     }
 
-#endregion
+    #endregion
+
+    private void Start()
+    {
+        stressTimer = stressTime;
+    }
+
+    //private void Update()
+    //{
+    //    if (stressTimer >= 0)
+    //    {
+    //        stressTimer -= Time.deltaTime;
+    //    }
+    //    else
+    //    {
+    //        StressDown(stressPassiveDecriase);
+    //    }
+    //}
 
     /// <summary>
     /// Increase stress level
@@ -42,6 +71,9 @@ public class Stress : MonoBehaviour
     public void StressUp (float amount)
     {
         StressLevel += amount;
+        stressTimer = stressTime;
+        ChangeStressBar(StressLevel);
+
     }
 
     /// <summary>
@@ -51,5 +83,26 @@ public class Stress : MonoBehaviour
     public void StressDown (float amount)
     {
         StressLevel -= amount;
+        ChangeStressBar(StressLevel);
+    }
+
+    IEnumerator IncreaseSlider(float amount)
+    {
+        while (stressBar.value <= amount - 0.5f)
+        {
+            stressBar.value = Mathf.MoveTowards(stressBar.value, amount, lerpSpeed * Time.deltaTime);
+            yield return Time.deltaTime;
+        }
+        stressBar.value = amount;
+        yield return null;
+    }
+
+    /// <summary>
+    /// Change stressBar level
+    /// </summary>
+    /// <param name="amount"></param>
+    private void ChangeStressBar(float amount)
+    {
+            stressBar.value = amount;
     }
 }
