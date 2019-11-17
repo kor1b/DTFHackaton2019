@@ -52,13 +52,13 @@ public class Stress : MonoBehaviour
 
     private void Update()
     {
-        DecreaseStressByTime();
+        StressDownByTime();
     }
 
     /// <summary>
     /// Decrease stress by stress levels
     /// </summary>
-    private void DecreaseStressByTime()
+    private void StressDownByTime()
     {
         if (StressLevel > minNormalStressValue && StressLevel < minOptimalStressValue)
             StressLevel -= normalStressSpeedDown * Time.deltaTime;
@@ -81,14 +81,14 @@ public class Stress : MonoBehaviour
             _dreamerCharacter.Die();
     }
 
-    /// <summary>
-    /// decrease stress level
-    /// </summary>
-    /// <param name="amount"></param>
-    public void StressDown (float amount)
-    {
-        StressLevel -= amount;
-    }
+//    /// <summary>
+//    /// decrease stress level
+//    /// </summary>
+//    /// <param name="amount"></param>
+//    public void StressDown (float amount)
+//    {
+//        StressLevel -= amount;
+//    }
 
     public bool IsOptimalStress()
     {
