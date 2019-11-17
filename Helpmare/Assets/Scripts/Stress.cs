@@ -7,20 +7,20 @@ public class Stress : MonoBehaviour
     [SerializeField] private float minStressValue = 0;
     [SerializeField] private float maxStressValue = 100;
 
-    public float stressLevel;
+    private float _stressLevel;
 
     //clamp stress level btw "minStressValue" and "maxStressValue"
     public float StressLevel
     {
-        get => stressLevel;
+        get => _stressLevel;
         private set
         {
-            if (stressLevel < minStressValue)
-                stressLevel = minStressValue;
-            else if (stressLevel > maxStressValue)
-                stressLevel = maxStressValue;
+            if (_stressLevel < minStressValue)
+                _stressLevel = minStressValue;
+            else if (_stressLevel > maxStressValue)
+                _stressLevel = maxStressValue;
             else
-                stressLevel = value;
+                _stressLevel = value;
         }
     }
 

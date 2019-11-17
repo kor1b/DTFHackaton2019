@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Barricade
   layers:
   - Default
   - TransparentFX
@@ -14,9 +15,9 @@ TagManager:
   - 
   - 
   - Obstacle
-  - 
-  - 
-  - 
+  - NPC
+  - Player
+  - MovableObstacle
   - 
   - 
   - 
@@ -38,9 +39,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Ground
+  - name: Background
     uniqueID: 672293481
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Foreground
+    uniqueID: 321069391
     locked: 0

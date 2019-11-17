@@ -209,9 +209,7 @@
           </e>
         </e>
         <e p="Scripts" t="Include">
-          <e p="Dreamer" t="Include">
-            <e p="DreamerMovement.cs" t="Include" />
-          </e>
+          <e p="AIMapRescanner.cs" t="Include" />
           <e p="Intefaces" t="Include">
             <e p="IMovable.cs" t="Include" />
           </e>
