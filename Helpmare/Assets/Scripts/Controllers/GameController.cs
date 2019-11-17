@@ -2,22 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; set; }
 
     public TextMeshProUGUI timerUI;
-    //public Button playButton;
-    //public Button exitButton;
-    public GameObject mainMenuUI;
-    public GameObject gameOverMenuUI;
 
     [SerializeField]
     private float game_time = 300f;
     private float curTime = 0f;
-    public bool startGame = false;
+    public bool startGame = true;
     //private float Time { get; set; }
 
     void Awake()
@@ -32,54 +27,51 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
-        Time.timeScale = 0;
-        mainMenuUI.SetActive(true);
-        gameOverMenuUI.SetActive(false);
-        //StartGame();
+        StartGame();
     }
 
-    public void StartGame() //вызываем при запуске уровня. Держит все параметры в порядке:) 
+    private void StartGame() //вызываем при запуске уровня. Держит все параметры в порядке:) 
     {
-        startGame = true;
-
         Time.timeScale = 1;
-        mainMenuUI.SetActive(false);
-        gameOverMenuUI.SetActive(false);
-        curTime = game_time;
+        if (startGame)
+            curTime = game_time;
+        else
+        {
+            Time.timeScale = 0;            //Мало ли чё
+            RestartGame();
+        }
     }
 
     void Update()
     {
-        if (startGame)
+        if (startGame && curTime >= 0)
         {
-            if (curTime >= 0)
-            {
-                curTime -= Time.deltaTime;
-                timerUI.text = ((int)curTime / 60).ToString("00") + ":" + ((int)curTime % 60).ToString("00");
-            }
-            else
-            {
-                EndGame();
-            }
+            curTime -= Time.deltaTime;
+            timerUI.text = ((int)curTime/60).ToString("00") + ":" + ((int)curTime%60).ToString("00");
         }
-        else if (Input.GetKey(KeyCode.Space))
+        else
         {
-            System.Console.WriteLine("Space");
+            EndGame();
+        }
+    }
+
+    public void EndGame()                        
+    {
+        //GameOver Window
+
+        startGame = false;
+        RestartGame();
+    }
+
+    private void RestartGame()
+    {
+
+        //ReloadLevel
+        Time.timeScale = 0;
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            startGame = true;
             StartGame();
         }
-    }
-
-    public void EndGame()
-    {
-        startGame = false;
-        //GameOver Window
-        gameOverMenuUI.SetActive(true);
-        Time.timeScale = 0f;
-        ReloadLevel(); //Можно перегрузить уровень и по пробелу, а можно и так(сразу)
-    }
-
-    private void ReloadLevel()
-    {
-        //ReloadinLevel(scene or prefab)
     }
 }
